@@ -1,0 +1,14 @@
+FROM java:7
+
+ENV HELLO_ENV kin
+WORKDIR /JavaInDocker
+RUN mkdir src && mkdir bin
+
+COPY JavaInDocker.java src
+
+RUN javac -d bin src/JavaInDocker.java
+
+RUN mkdir -p /data/myvol1 && echo "hello world" >> /data/myvol1/testfile
+VOLUME ["/data/myvol1"]
+
+CMD ["java", "-cp", "bin",  "JavaInDocker"]

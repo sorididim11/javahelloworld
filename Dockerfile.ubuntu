@@ -1,0 +1,8 @@
+FROM centos:7
+
+RUN yum install vim -y
+RUN yum install tree -y
+
+
+CMD ["-c", "5"]
+ENTRYPOINT ping 127.0.0.1
